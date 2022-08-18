@@ -10,10 +10,10 @@ instance.interceptors.request.use(request => {
     request.headers['Authorization'] = `${pikpakLogin.token_type || 'Bearer'} ${pikpakLogin.access_token}`
   }
   if (request.url) {
-    request.url.replace(/^https:\/\/user\.mypikpak\.com\//, '/api/user/')
-    request.url.replace(/^https:\/\/api-drive\.mypikpak\.com\//, '/api/drive/')
-    request.url.replace(/^https:\/\/api\.notion\.com\//, '/api/notion/')
-    request.url.replace(/^https:\/\/pikpak-depot\.z10\.workers\.dev\//, '/api/depot/')
+    request.url = request.url.replace(/^https:\/\/user\.mypikpak\.com\//, '/api/user/')
+    request.url = request.url.replace(/^https:\/\/api-drive\.mypikpak\.com\//, '/api/drive/')
+    request.url = request.url.replace(/^https:\/\/api\.notion\.com\//, '/api/notion/')
+    request.url = request.url.replace(/^https:\/\/pikpak-depot\.z10\.workers\.dev\//, '/api/depot/')
   }
   return request
 })
