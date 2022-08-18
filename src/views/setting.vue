@@ -141,7 +141,7 @@ const loginPost = () => {
       title: '警告',
       content: '记住登陆是指浏览器本地明文保存用户名密码用于下次自动登陆，请勿在非信任设备选择',
       positiveText: '确定',
-      negativeText: '不确定',
+      negativeText: '取消',
       onPositiveClick: () => {
         window.localStorage.setItem('pikpakLoginData', JSON.stringify(loginData.value))
       },

@@ -378,7 +378,7 @@ import axios from 'axios';
                 title: '警告',
                 content: '确定删除' + row.name  + '？',
                 positiveText: '确定',
-                negativeText: '不确定',
+                negativeText: '取消',
                 onPositiveClick: () => {
                   deleteFile(String(row.id))
                 }
@@ -429,7 +429,7 @@ import axios from 'axios';
                       title: '警告',
                       content: '确定删除' + row.name  + '？',
                       positiveText: '确定',
-                      negativeText: '不确定',
+                      negativeText: '取消',
                       onPositiveClick: () => {
                         deleteFile(String(row.id))
                       }

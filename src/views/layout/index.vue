@@ -223,7 +223,7 @@ import { useRoute, useRouter } from 'vue-router'
         title: '警告',
         content: '确定退出？',
         positiveText: '确定',
-        negativeText: '不确定',
+        negativeText: '取消',
         onPositiveClick: () => {
           http.post('https://user.mypikpak.com/v1/auth/revoke', {})
             .then(res => {
