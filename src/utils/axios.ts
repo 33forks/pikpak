@@ -9,12 +9,11 @@ instance.interceptors.request.use(request => {
   if (pikpakLogin.access_token) {
     request.headers['Authorization'] = `${pikpakLogin.token_type || 'Bearer'} ${pikpakLogin.access_token}`
   }
-  if(request.url?.indexOf('https://', 4) === -1) {
-    const proxyArray = JSON.parse(window.localStorage.getItem('proxy') || '[]')
-    if (proxyArray.length > 0) {
-      const index = Math.floor((Math.random() * proxyArray.length))
-      request.url = proxyArray[index] + '/' + request.url
-    }
+  if (request.url) {
+    request.url.replace(/^https:\/\/user\.mypikpak\.com\//, '/api/user/')
+    request.url.replace(/^https:\/\/api-drive\.mypikpak\.com\//, '/api/drive/')
+    request.url.replace(/^https:\/\/api\.notion\.com\//, '/api/notion/')
+    request.url.replace(/^https:\/\/pikpak-depot\.z10\.workers\.dev\//, '/api/depot/')
   }
   return request
 })
