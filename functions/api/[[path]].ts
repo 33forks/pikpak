@@ -7,8 +7,9 @@ const baseUrlMap = {
 
 export const onRequest = [
   async ({ request }: { request: Request }) => {
-    const srcUrl = request.url
-    const [ domain, uri ] = srcUrl.match(/^\/api\/([^/]+)(.*)$/) || []
+    const srcUrl = new URL(request.url)
+    const srcRequest = srcUrl.pathname + srcUrl.search
+    const [ domain, uri ] = srcRequest.match(/^\/api\/([^/]+)(.*)$/) || []
     if (!domain || !uri) {
       return new Response(`404 not found\r\ndomain: ${domain}\r\nuri: ${uri}\r\nrequest url: ${request.url}`, { status: 404 })
     }
